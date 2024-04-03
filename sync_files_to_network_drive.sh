@@ -145,7 +145,7 @@ clear
 func_set_colors
 
 # Start the jobs file
-# Example: source <(curl -s https://raw.githubusercontent.com/BeckenrandschwimmerTim/openmediavault/main/sync_files_to_network_drive_jobs_EXAMPLE)
+func_timestamp
 if [ -f /sharedfolders/Appdata/scripts/sync_files_to_network_drive.jobs ]; then
 	echo -e "${Color_Green}$timestamp :: ${CM} [File ] :: Success: Found sync_files_to_network_drive.jobs${Color_NC}"
 	source /sharedfolders/Appdata/scripts/sync_files_to_network_drive.jobs

@@ -54,7 +54,7 @@ function func_mount(){
 
 function func_unmount {
     func_timestamp
-	echo -e "$timestamp :: ${CM} [Mount] :: Unmounting $mountpoint ..."
+    echo -e "$timestamp :: ${CM} [Mount] :: Unmounting $mountpoint ..."
     umount $mountpoint 2> /dev/null
     rmdir $mountpoint 2> /dev/null
     echo -e "$timestamp :: ${CM} [Mount] :: Unmounting done or not needed"
@@ -64,7 +64,7 @@ function func_sync(){
     func_timestamp
     if [ -d $source_dir ]; then
 		if [ -d $mountpoint ]; then
-            echo -e "$timestamp :: ${CM} [Sync] :: Syncing $source_dir to $mountpoint ..."
+            echo -e "$timestamp :: ${CM} [Sync ] :: Syncing $source_dir to $mountpoint ..."
             if [ "$dryrun" -eq "1" ]
             then
                 rsync -av --delete-before --dry-run --progress $source_dir $mountpoint
@@ -101,7 +101,7 @@ function func_sync_related_to_marker_files(){
     cd $mountpoint
     for i in *; do
         if ! grep -qxFe "$i" $temp_file; then
-            echo -e "$timestamp :: ${CM} [Sync] :: Deleting: $mountpoint/$i ..."
+            echo -e "$timestamp :: ${CM} [Sync ] :: Deleting: $mountpoint/$i ..."
             rm -r "$mountpoint/$i"
         fi
     done
@@ -109,7 +109,7 @@ function func_sync_related_to_marker_files(){
     # Do the Sync, related to the $temp_file
     while read line
     do
-        echo -e "${Color_Orange}$timestamp :: ${CM} [Sync] :: $line ...${Color_NC}"
+        echo -e "${Color_Orange}$timestamp :: ${CM} [Sync ] :: $line ...${Color_NC}"
         rsync -av --delete-before --progress "$source_dir/$line" $mountpoint
         func_rsync_error_check
         func_small_line
@@ -125,17 +125,17 @@ function func_rsync_error_check(){
             func_timestamp
             if [ -z "$line" ]
             then
-                echo -e "${Color_Green}$timestamp :: ${CM} [Sync] :: Success: $source_dir${Color_NC}"
+                echo -e "${Color_Green}$timestamp :: ${CM} [Sync ] :: Success: $source_dir${Color_NC}"
             else
-                echo -e "${Color_Green}$timestamp :: ${CM} [Sync] :: Success: $source_dir$line${Color_NC}"
+                echo -e "${Color_Green}$timestamp :: ${CM} [Sync ] :: Success: $source_dir$line${Color_NC}"
             fi
         else
             func_timestamp
             if [ -z "$line" ]
             then
-                echo -e "${Color_Red}$timestamp :: ${CROSS} [Sync] :: ERROR: $source_dir${Color_NC}"
+                echo -e "${Color_Red}$timestamp :: ${CROSS} [Sync ] :: ERROR: $source_dir${Color_NC}"
             else
-                echo -e "${Color_Red}$timestamp :: ${CROSS} [Sync] :: ERROR: $source_dir$line${Color_NC}"
+                echo -e "${Color_Red}$timestamp :: ${CROSS} [Sync ] :: ERROR: $source_dir$line${Color_NC}"
             fi
             exit
         fi
@@ -146,4 +146,8 @@ func_set_colors
 
 # Start the jobs file
 # Example: source <(curl -s https://raw.githubusercontent.com/BeckenrandschwimmerTim/openmediavault/main/sync_files_to_network_drive_jobs_EXAMPLE)
-source /sharedfolders/Appdata/scripts/sync_to_network_drive_jobs
+if [ -f /sharedfolders/Appdata/scripts/sync_to_network_drive_jobs ]; then
+	source /sharedfolders/Appdata/scripts/sync_to_network_drive_jobs
+else
+	echo -e "${Color_Red}$timestamp :: ${CROSS} [File ] :: ERROR: /sharedfolders/Appdata/scripts/sync_to_network_drive_jobs not found{Color_NC}"
+fi

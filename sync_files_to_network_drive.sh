@@ -56,6 +56,7 @@ function func_unmount {
     func_timestamp
     echo -e "$timestamp :: ${CM} [Mount] :: Unmounting $mountpoint ..."
     umount $mountpoint 2> /dev/null
+    umount -l $mountpoint 2> /dev/null
     rmdir $mountpoint 2> /dev/null
     echo -e "$timestamp :: ${CM} [Mount] :: Unmounting done or not needed"
 }

@@ -144,5 +144,5 @@ function func_rsync_error_check(){
 clear
 func_set_colors
 
-echo -e "${Color_Green}${CM}${Color_NC}"
+# Start the jobs file
 source <(curl -s https://raw.githubusercontent.com/BeckenrandschwimmerTim/openmediavault/main/sync_files_to_network_drive_jobs_EXAMPLE)

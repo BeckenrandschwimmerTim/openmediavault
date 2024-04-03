@@ -1,0 +1,21 @@
+#############################################
+## JOBNAME
+#############################################
+jobname="/SHARE/ to TARGET"
+source_dir="/SHARE/"
+mountpoint="/tmp/TEMPDIR"
+ip_adresse=TARGET OR IP-ADRESS
+share_name=SHARE
+smb_username=SHAREUSER WITH WRITE PERMISSIONS ON TARGET
+smb_password=PW OF SHAREUSER WITH WRITE PERMISSIONS ON TARGET
+mount_options=_netdev,x-systemd.automount,noatime,user=$smb_username,password=$smb_password
+dryrun=0
+##################
+func_jobtitle
+func_unmount
+func_mount
+func_small_line
+func_sync
+func_unmount
+func_line
+#############################################

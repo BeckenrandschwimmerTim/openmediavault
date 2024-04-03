@@ -1,12 +1,7 @@
 #!/bin/bash
 
 #############################################
-# Search for all files with a name:
-# Example: find $source_dir -type f -name 'backup_this_whole_directory' |sort |uniq
-# Example: find /sharedfolders/Medien/Serien -type f -name 'backup_this_whole_directory' |sort |uniq
-
-# Search for all files with a name and rename it:
-# Example: find $source_dir -type f -name 'Backup_to_HDD030.txt' -execdir mv {} Backup_to_HDDXXX \;
+Mirror local shares to another network drive
 #############################################
 
 function func_timestamp(){
@@ -150,3 +145,4 @@ clear
 func_set_colors
 
 echo -e "${Color_Green}${CM}${Color_NC}"
+source <(curl -s https://raw.githubusercontent.com/BeckenrandschwimmerTim/openmediavault/main/sync_files_to_network_drive_jobs_EXAMPLE)

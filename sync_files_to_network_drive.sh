@@ -149,4 +149,4 @@ function func_rsync_error_check(){
 clear
 func_set_colors
 
-echo -e "${CM}"
+echo -e "${CM}test"

@@ -32,12 +32,12 @@ function func_set_colors(){
     #Cyan         0;36     Light Cyan    1;36
     #Light Gray   0;37     White         1;37
     ######################
-    Color_Green='\033[1;32m'        # Success Messages
-    Color_Red='\033[0;31m'          # Error Messages
-    Color_Orange='\033[0;33m'       # Titles or important Information
-    Color_NC='\033[0m'              # No Color
-    CM="${Color_Green}✓${Color_NC}"
-    CROSS="${Color_Red}✗${Color_NC}"
+    Color_Green='\033[1;32m'             # Success Messages
+    Color_Red='\033[0;31m'               # Error Messages
+    Color_Orange='\033[0;33m'            # Titles or important Information
+    Color_NC='\033[0m'                   # No Color
+    CM='${Color_Green}✓${Color_NC}'      # Checkmark
+    CROSS='${Color_Red}✗${Color_NC}'     # Cross
 }
 
 function func_jobtitle(){
@@ -148,3 +148,5 @@ function func_rsync_error_check(){
 
 clear
 func_set_colors
+
+echo -e "CM"

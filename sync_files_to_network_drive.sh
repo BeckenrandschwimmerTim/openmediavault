@@ -42,7 +42,7 @@ function func_jobtitle(){
 
 function func_mount(){
     func_timestamp
-    echo -e "$timestamp :: [Mount] :: Mounting $mountpoint ..."
+    echo -e "$timestamp :: ${CM} [Mount] :: Mounting $mountpoint ..."
     mkdir -p $mountpoint
     if sudo mount.cifs //$ip_adresse/$share_name $mountpoint -o $mount_options ; then
         echo -e "${Color_Green}$timestamp :: ${CM} [Mount] :: Mount successfully${Color_NC}"
@@ -145,4 +145,5 @@ clear
 func_set_colors
 
 # Start the jobs file
-source <(curl -s https://raw.githubusercontent.com/BeckenrandschwimmerTim/openmediavault/main/sync_files_to_network_drive_jobs_EXAMPLE)
+# source <(curl -s https://raw.githubusercontent.com/BeckenrandschwimmerTim/openmediavault/main/sync_files_to_network_drive_jobs_EXAMPLE)
+source < /sharedfolders/Appdata/scripts/sync_to_network_drive_jobs

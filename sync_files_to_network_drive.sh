@@ -145,5 +145,5 @@ clear
 func_set_colors
 
 # Start the jobs file
-# source <(curl -s https://raw.githubusercontent.com/BeckenrandschwimmerTim/openmediavault/main/sync_files_to_network_drive_jobs_EXAMPLE)
-source < /sharedfolders/Appdata/scripts/sync_to_network_drive_jobs
+# Example: source <(curl -s https://raw.githubusercontent.com/BeckenrandschwimmerTim/openmediavault/main/sync_files_to_network_drive_jobs_EXAMPLE)
+source </sharedfolders/Appdata/scripts/sync_to_network_drive_jobs

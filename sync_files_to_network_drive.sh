@@ -146,4 +146,4 @@ func_set_colors
 
 # Start the jobs file
 # Example: source <(curl -s https://raw.githubusercontent.com/BeckenrandschwimmerTim/openmediavault/main/sync_files_to_network_drive_jobs_EXAMPLE)
-source </sharedfolders/Appdata/scripts/sync_to_network_drive_jobs
+source /sharedfolders/Appdata/scripts/sync_to_network_drive_jobs

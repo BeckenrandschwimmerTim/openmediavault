@@ -37,7 +37,7 @@ function func_set_colors(){
 
 function func_jobtitle(){
     func_timestamp
-	echo -e "${Color_Orange}$timestamp :: [Start] :: Starting Job $jobname${Color_NC}"
+	echo -e "${Color_Orange}$timestamp :: ${CM} [Start] :: Starting Job $jobname${Color_NC}"
 }
 
 function func_mount(){
@@ -45,26 +45,26 @@ function func_mount(){
     echo -e "$timestamp :: [Mount] :: Mounting $mountpoint ..."
     mkdir -p $mountpoint
     if sudo mount.cifs //$ip_adresse/$share_name $mountpoint -o $mount_options ; then
-        echo -e "${Color_Green}$timestamp :: [Mount] :: Mount successfully${Color_NC}"
+        echo -e "${Color_Green}$timestamp :: ${CM} [Mount] :: Mount successfully${Color_NC}"
     else
-        echo -e "${Color_Red}$timestamp :: [Mount] :: Mount error with //$ip_adresse/$share_name on $mountpoint${Color_NC}"
+        echo -e "${Color_Red}$timestamp :: ${CROSS} [Mount] :: Mount error with //$ip_adresse/$share_name on $mountpoint${Color_NC}"
         exit
     fi
 }
 
 function func_unmount {
     func_timestamp
-	echo -e "$timestamp :: [Mount] :: Unmounting $mountpoint ..."
+	echo -e "$timestamp :: ${CM} [Mount] :: Unmounting $mountpoint ..."
     umount $mountpoint 2> /dev/null
     rmdir $mountpoint 2> /dev/null
-    echo -e "$timestamp :: [Mount] :: Unmounting done or not needed"
+    echo -e "$timestamp :: ${CM} [Mount] :: Unmounting done or not needed"
 }
 
 function func_sync(){
     func_timestamp
     if [ -d $source_dir ]; then
 		if [ -d $mountpoint ]; then
-            echo -e "$timestamp :: [Sync] :: Syncing $source_dir to $mountpoint ..."
+            echo -e "$timestamp :: ${CM} [Sync] :: Syncing $source_dir to $mountpoint ..."
             if [ "$dryrun" -eq "1" ]
             then
                 rsync -av --delete-before --dry-run --progress $source_dir $mountpoint
@@ -76,11 +76,11 @@ function func_sync(){
                 func_small_line
             fi
         else
-			echo "${Color_Red}$timestamp :: [Mount] :: ERROR: $mountpoint not found${Color_NC}"
+			echo "${Color_Red}$timestamp :: ${CROSS} [Mount] :: ERROR: $mountpoint not found${Color_NC}"
             exit
         fi
     else
-        echo "${Color_Red}$timestamp :: [Mount] :: ERROR: $source_dir not found${Color_NC}"
+        echo "${Color_Red}$timestamp :: ${CROSS} [Mount] :: ERROR: $source_dir not found${Color_NC}"
         exit
     fi
 }
@@ -101,7 +101,7 @@ function func_sync_related_to_marker_files(){
     cd $mountpoint
     for i in *; do
         if ! grep -qxFe "$i" $temp_file; then
-            echo -e "$timestamp :: [Sync] :: Deleting: $mountpoint/$i ..."
+            echo -e "$timestamp :: ${CM} [Sync] :: Deleting: $mountpoint/$i ..."
             rm -r "$mountpoint/$i"
         fi
     done
@@ -109,7 +109,7 @@ function func_sync_related_to_marker_files(){
     # Do the Sync, related to the $temp_file
     while read line
     do
-        echo -e "${Color_Orange}$timestamp :: [Sync] :: $line ...${Color_NC}"
+        echo -e "${Color_Orange}$timestamp :: ${CM} [Sync] :: $line ...${Color_NC}"
         rsync -av --delete-before --progress "$source_dir/$line" $mountpoint
         func_rsync_error_check
         func_small_line
@@ -125,17 +125,17 @@ function func_rsync_error_check(){
             func_timestamp
             if [ -z "$line" ]
             then
-                echo -e "${Color_Green}$timestamp :: [Sync] :: Success: $source_dir${Color_NC}"
+                echo -e "${Color_Green}$timestamp :: ${CM} [Sync] :: Success: $source_dir${Color_NC}"
             else
-                echo -e "${Color_Green}$timestamp :: [Sync] :: Success: $source_dir$line${Color_NC}"
+                echo -e "${Color_Green}$timestamp :: ${CM} [Sync] :: Success: $source_dir$line${Color_NC}"
             fi
         else
             func_timestamp
             if [ -z "$line" ]
             then
-                echo -e "${Color_Red}$timestamp :: [Sync] :: ERROR: $source_dir${Color_NC}"
+                echo -e "${Color_Red}$timestamp :: ${CROSS} [Sync] :: ERROR: $source_dir${Color_NC}"
             else
-                echo -e "${Color_Red}$timestamp :: [Sync] :: ERROR: $source_dir$line${Color_NC}"
+                echo -e "${Color_Red}$timestamp :: ${CROSS} [Sync] :: ERROR: $source_dir$line${Color_NC}"
             fi
             exit
         fi

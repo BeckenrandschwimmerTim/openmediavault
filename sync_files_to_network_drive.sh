@@ -146,8 +146,4 @@ func_set_colors
 
 # Start the jobs file
 # Example: source <(curl -s https://raw.githubusercontent.com/BeckenrandschwimmerTim/openmediavault/main/sync_files_to_network_drive_jobs_EXAMPLE)
-if [ -f /sharedfolders/Appdata/scripts/sync_to_network_drive_jobs ]; then
-	source /sharedfolders/Appdata/scripts/sync_to_network_drive_jobs
-else
-	echo -e "${Color_Red}$timestamp :: ${CROSS} [File ] :: ERROR: /sharedfolders/Appdata/scripts/sync_to_network_drive_jobs not found{Color_NC}"
-fi
+source /sharedfolders/Appdata/scripts/sync_files_to_network_drive.jobs

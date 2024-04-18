@@ -1,39 +1,18 @@
 #!/bin/bash
 
-##############################################
-# Mirror local shares to another network drive
-##############################################
+##################################################
+App="Mirror local shares to another network drive"
+##################################################
 
-function func_timestamp(){
-	timestamp=$(date +"%d.%m.%y - %T")
-}
-
-function func_line(){
-	echo -e "\n====================== \n"
-}
-
-function func_small_line(){
-	echo -e "\n=== \n"
-}
-
-function func_set_colors(){
-    ######################
-    #Black        0;30     Dark Gray     1;30
-    #Red          0;31     Light Red     1;31
-    #Green        0;32     Light Green   1;32
-    #Brown/Orange 0;33     Yellow        1;33
-    #Blue         0;34     Light Blue    1;34
-    #Purple       0;35     Light Purple  1;35
-    #Cyan         0;36     Light Cyan    1;36
-    #Light Gray   0;37     White         1;37
-    ######################
-    Color_Green='\033[1;32m'             # Success Messages
-    Color_Red='\033[0;31m'               # Error Messages
-    Color_Orange='\033[0;33m'            # Titles or important Information
-    Color_NC='\033[0m'                   # No Color
-    CM='✓'                               # Checkmark
-    CROSS='✗'                            # Cross
-}
+# Search for main.func primarily localy else source it from the web
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+if [ -f $DIR/../misc/main.func ]; then
+  echo -e "Use local source"
+  source "$DIR/../misc/main.func"
+else
+  echo -e "Use web source"
+  source <(curl -s https://raw.githubusercontent.com/BeckenrandschwimmerTim/proxmox/main/misc/main.func)
+fi
 
 function func_jobtitle(){
     func_timestamp
@@ -142,8 +121,8 @@ function func_rsync_error_check(){
         fi
 }
 
-clear
-func_set_colors
+header_info
+func_app_title
 
 # Start the jobs file
 func_timestamp

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-##################################################
-App="Mirror local shares to another network drive"
-##################################################
+##################################################################
+App="Mirror local shares to another network drive (with checksum)"
+##################################################################
 
 # Search for main.func primarily localy else source it from the web
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )

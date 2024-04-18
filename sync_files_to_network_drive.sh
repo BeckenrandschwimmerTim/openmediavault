@@ -90,7 +90,7 @@ function func_sync_related_to_marker_files(){
     while read line
     do
         echo -e "${Color_Orange}$timestamp :: ${CM} [Sync ] :: $line ...${Color_NC}"
-        rsync -av --delete-before --progress "$source_dir/$line" $mountpoint
+        rsync -av --delete-before --checksum --progress "$source_dir/$line" $mountpoint
         func_rsync_error_check
         func_small_line
     done < $temp_file

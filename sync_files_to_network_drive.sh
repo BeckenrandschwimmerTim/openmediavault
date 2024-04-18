@@ -1,8 +1,8 @@
 #!/bin/bash
 
-##################################################################
-App="Mirror local shares to another network drive (with checksum)"
-##################################################################
+#################################################
+App="Mirror local files to another network drive"
+#################################################
 
 # Search for main.func primarily localy else source it from the web
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
@@ -47,11 +47,11 @@ function func_sync(){
             echo -e "$timestamp :: ${CM} [Sync ] :: Syncing $source_dir to $mountpoint ..."
             if [ "$dryrun" -eq "1" ]
             then
-                rsync -av --delete-before --checksum --dry-run --progress $source_dir $mountpoint
+                rsync -av --delete-before --dry-run --progress $source_dir $mountpoint
                 func_rsync_error_check
                 func_small_line
             else
-                rsync -av --delete-before --checksum --progress $source_dir $mountpoint
+                rsync -av --delete-before --progress $source_dir $mountpoint
                 func_rsync_error_check
                 func_small_line
             fi
@@ -90,7 +90,7 @@ function func_sync_related_to_marker_files(){
     while read line
     do
         echo -e "${Color_Orange}$timestamp :: ${CM} [Sync ] :: $line ...${Color_NC}"
-        rsync -av --delete-before --checksum --progress "$source_dir/$line" $mountpoint
+        rsync -av --delete-before --progress "$source_dir/$line" $mountpoint
         func_rsync_error_check
         func_small_line
     done < $temp_file

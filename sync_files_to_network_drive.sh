@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#############################################
-Mirror local shares to another network drive
-#############################################
+##############################################
+# Mirror local shares to another network drive
+##############################################
 
 function func_timestamp(){
 	timestamp=$(date +"%d.%m.%y - %T")
@@ -68,11 +68,11 @@ function func_sync(){
             echo -e "$timestamp :: ${CM} [Sync ] :: Syncing $source_dir to $mountpoint ..."
             if [ "$dryrun" -eq "1" ]
             then
-                rsync -av --delete-before --dry-run --progress $source_dir $mountpoint
+                rsync -av --delete-before --checksum --dry-run --progress $source_dir $mountpoint
                 func_rsync_error_check
                 func_small_line
             else
-                rsync -av --delete-before --progress $source_dir $mountpoint
+                rsync -av --delete-before --checksum --progress $source_dir $mountpoint
                 func_rsync_error_check
                 func_small_line
             fi

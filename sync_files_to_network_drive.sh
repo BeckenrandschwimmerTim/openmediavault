@@ -130,7 +130,7 @@ func_app_title
 
 # Search and Start the jobs file
 func_timestamp
-if [ -f $DIR/sync_files_to_network_drive.jobs ]; then
+if [ -f $jobs_path ]; then
 	echo -e "${Color_Green}$timestamp :: ${CM} [File ] :: Success: Found $jobs_path${Color_NC}"
 	source $jobs_path
 else

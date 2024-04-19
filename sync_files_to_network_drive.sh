@@ -130,5 +130,10 @@ if [ -f $DIR/sync_files_to_network_drive.jobs ]; then
 	echo -e "${Color_Green}$timestamp :: ${CM} [File ] :: Success: Found sync_files_to_network_drive.jobs${Color_NC}"
 	source $DIR/sync_files_to_network_drive.jobs
 else
-	echo -e "${Color_Red}$timestamp :: ${CROSS} [File ] :: ERROR: $DIR/sync_files_to_network_drive.jobs not found${Color_NC}"
+	if [ -f /sharedfolders/Appdata/scripts/sync_files_to_network_drive.jobs ]; then
+ 		echo -e "${Color_Green}$timestamp :: ${CM} [File ] :: Success: Found sync_files_to_network_drive.jobs${Color_NC}"
+ 		source /sharedfolders/Appdata/scripts/sync_files_to_network_drive.jobs
+   	else
+    		echo -e "${Color_Red}$timestamp :: ${CROSS} [File ] :: ERROR: $DIR/sync_files_to_network_drive.jobs not found${Color_NC}"
+   	fi
 fi

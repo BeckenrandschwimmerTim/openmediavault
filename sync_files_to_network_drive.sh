@@ -124,7 +124,7 @@ function func_rsync_error_check(){
 header_info
 func_app_title
 
-# Start the jobs file
+# Search and Start the jobs file
 func_timestamp
 if [ -f $DIR/sync_files_to_network_drive.jobs ]; then
 	echo -e "${Color_Green}$timestamp :: ${CM} [File ] :: Success: Found sync_files_to_network_drive.jobs${Color_NC}"

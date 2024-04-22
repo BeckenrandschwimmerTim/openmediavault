@@ -10,8 +10,10 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 # Search for main.func and source it
 if [ -f $DIR/../main.func ]; then
   source "$DIR/../main.func"
+  echo -e "${Color_Green}$timestamp :: ${CM} [File ] :: Success: Found main.func${Color_NC}"
 elif [ -f $DIR/main.func ]; then
   source "$DIR/main.func"
+  echo -e "${Color_Green}$timestamp :: ${CM} [File ] :: Success: Found main.func${Color_NC}"
 else
   echo -e "Could not find main.func anywhere"
   exit 1

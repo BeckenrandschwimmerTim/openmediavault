@@ -4,7 +4,7 @@
 App="Mirror local files to another network drive"
 #################################################
 
-jobs_path="/sharedfolders/Appdata/scripts/sync_files_to_network_drive.jobs"
+jobs_path="/sharedfolders/Appdata/scripts/sync_files_to_network_drive/sync_files_to_network_drive.jobs"
 
 #################################################
 

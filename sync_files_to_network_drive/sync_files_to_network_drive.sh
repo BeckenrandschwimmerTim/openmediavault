@@ -4,10 +4,6 @@
 App="Mirror local files to another network drive"
 #################################################
 
-jobs_path="/sharedfolders/Appdata/scripts/sync_files_to_network_drive/sync_files_to_network_drive.jobs"
-
-#################################################
-
 # Eval script dir
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
@@ -134,9 +130,9 @@ func_app_title
 
 # Search and Start the jobs file
 func_timestamp
-if [ -f $jobs_path ]; then
-	echo -e "${Color_Green}$timestamp :: ${CM} [File ] :: Success: Found $jobs_path${Color_NC}"
-	source $jobs_path
+if [ -f $DIR/sync_files_to_network_drive.jobs ]; then
+	echo -e "${Color_Green}$timestamp :: ${CM} [File ] :: Success: Found sync_files_to_network_drive.jobs${Color_NC}"
+	source $DIR/sync_files_to_network_drive.jobs
 else
-    	echo -e "${Color_Red}$timestamp :: ${CROSS} [File ] :: ERROR: $jobs_path not found${Color_NC}"
+    	echo -e "${Color_Red}$timestamp :: ${CROSS} [File ] :: ERROR: sync_files_to_network_drive.jobs not found${Color_NC}"
 fi

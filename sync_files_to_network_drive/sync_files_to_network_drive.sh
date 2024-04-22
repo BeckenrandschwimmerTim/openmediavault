@@ -8,15 +8,19 @@ jobs_path="/sharedfolders/Appdata/scripts/sync_files_to_network_drive.jobs"
 
 #################################################
 
-# Search for main.func primarily localy else source it from the web
+# Eval script dir
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-if [ -f $DIR/../misc/main.func ]; then
-  echo -e "Use local source"
-  source "$DIR/../misc/main.func"
+
+# Search for main.func and source it
+if [ -f $DIR/../main.func ]; then
+  source "$DIR/../main.func"
+elif [ -f $DIR/main.func ]; then
+  source "$DIR/main.func"
 else
-  echo -e "Use web source"
-  source <(curl -s https://raw.githubusercontent.com/BeckenrandschwimmerTim/proxmox/main/misc/main.func)
+  echo -e "Could not find main.func anywhere"
+  exit 1
 fi
+
 
 function func_jobtitle(){
     func_timestamp

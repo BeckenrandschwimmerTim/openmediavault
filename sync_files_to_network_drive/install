@@ -16,3 +16,4 @@ curl https://raw.githubusercontent.com/BeckenrandschwimmerTim/proxmox/main/misc/
 
 cd $DIR/sync_files_to_network_drive
 curl https://raw.githubusercontent.com/BeckenrandschwimmerTim/openmediavault/main/sync_files_to_network_drive/sync_files_to_network_drive.sh -o sync_files_to_network_drive.sh
+chmod +x sync_files_to_network_drive.sh

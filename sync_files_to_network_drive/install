@@ -8,6 +8,11 @@ fi
 # Eval script dir
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-mkdir -p $DIR/tescht
-touch $DIR/tescht/2
-touch $DIR/1
+mkdir -p $DIR/sync_files_to_network_drive
+mkdir -p $DIR/misc
+
+cd $DIR/misc
+curl https://raw.githubusercontent.com/BeckenrandschwimmerTim/proxmox/main/misc/main.func -o main.func
+
+cd $DIR/sync_files_to_network_drive
+curl https://raw.githubusercontent.com/BeckenrandschwimmerTim/openmediavault/main/sync_files_to_network_drive/sync_files_to_network_drive.sh -o sync_files_to_network_drive.sh

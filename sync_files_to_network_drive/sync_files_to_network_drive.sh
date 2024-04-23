@@ -10,8 +10,6 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 # Search for main.func and source it
 if [ -f $DIR/../misc/main.func ]; then
   source "$DIR/../misc/main.func"
-#elif [ -f $DIR/main.func ]; then
-#  source "$DIR/main.func"
 else
   echo -e "Could not find main.func anywhere"
   exit 1
